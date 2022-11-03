@@ -11,17 +11,36 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TravelPal.Managers;
 
-namespace TravelPal
+namespace TravelPal;
+
+/// <summary>
+/// Interaction logic for TravelsWindow.xaml
+/// </summary>
+public partial class TravelsWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for TravelsWindow.xaml
-    /// </summary>
-    public partial class TravelsWindow : Window
+    private MainWindow mainWindow;
+    private UserManager userManager;
+    public TravelsWindow(MainWindow mainWindow, UserManager userManager)
     {
-        public TravelsWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+        lblUser.Content = userManager.SignedInUser.Username;
+        this.mainWindow = mainWindow;
+        this.userManager = userManager;
+    }
+
+    private void btnUser_Click(object sender, RoutedEventArgs e)
+    {
+        Hide();
+        UserDetailsWindow userDetailsWindow = new UserDetailsWindow(this,userManager);
+        userDetailsWindow.Show();
+    }
+
+    private void btnAddTravel_Click(object sender, RoutedEventArgs e)
+    {
+        Hide();
+        AddTravelWindow addTravelWindow = new AddTravelWindow(this, UserManager);
+        addTravelWindow.Show();
     }
 }

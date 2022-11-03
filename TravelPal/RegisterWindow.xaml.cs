@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TravelPal.Enums;
+using TravelPal.Managers;
+using TravelPal.Model;
 
 namespace TravelPal;
 
@@ -22,16 +24,39 @@ namespace TravelPal;
 public partial class RegisterWindow : Window
 {
     private MainWindow mainWindow;
-    public RegisterWindow(MainWindow mainWindow)
+    private UserManager userManager;
+    public RegisterWindow(MainWindow mainWindow, UserManager userManager)
     {
         InitializeComponent();
         this.mainWindow = mainWindow;
+        this.userManager = userManager;
 
-        cbCountry.ItemsSource = Enum.GetValues(typeof(Countries));
+        string[] countries = Enum.GetNames(typeof(Countries));
+        cbCountry.ItemsSource = countries;
     }
 
     private void btnRegister_Click(object sender, RoutedEventArgs e)
     {
+        bool success = true;
+        User user = new User();
+        try
+        {
+            user.Location = (Countries)Enum.Parse(typeof(Countries), (string)cbCountry.SelectedItem);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("You need to select a country!");
+            success = false;
+        }
+        user.Username = txtUsername.Text;
+        user.Password = pwdPassword.Password;
+        if (success)
+        {
+            if (!userManager.AddUser(user))
+            {
+                MessageBox.Show("Username already exists!");
+            }
+        }
         Close();
         mainWindow.Show();
     }

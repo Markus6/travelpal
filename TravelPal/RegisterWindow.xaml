@@ -46,8 +46,8 @@
             Grid.Column="2"
             Margin="10"
             Height="50"/>
-        <TextBox
-            x:Name="txtPassword"
+        <PasswordBox
+            x:Name="pwdPassword"
             Grid.Row="2"
             Grid.Column="2"
             Margin="10"

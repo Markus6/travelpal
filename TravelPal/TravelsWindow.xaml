@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelPal"
         mc:Ignorable="d"
-        Title="TravelsWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="TravelsWindow" Height="450" Width="800" FontFamily="Arial" FontSize="20">
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label
+            x:Name="lblUser"
+            Grid.Column="0"
+            Grid.Row="0"
+            Grid.ColumnSpan="4"
+            VerticalContentAlignment="Center"
+            HorizontalAlignment="Center"
+            FontSize="50"/>
+        <ListView
+            Grid.Column="1"
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="2"/>
+        <Button
+            x:Name="btnUser"
+            Grid.Column="1"
+            Grid.Row="3"
+            Content="User"
+            Margin="10" Click="btnUser_Click"/>
+        <Button
+            x:Name="btnAddTravel"
+            Grid.Column="2"
+            Grid.Row="3"
+            Content="Add travel"
+            Margin="10" Click="btnAddTravel_Click"/>
     </Grid>
 </Window>

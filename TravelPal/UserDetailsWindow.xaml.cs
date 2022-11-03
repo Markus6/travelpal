@@ -11,17 +11,21 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TravelPal.Managers;
 
-namespace TravelPal
+namespace TravelPal;
+
+/// <summary>
+/// Interaction logic for UserDetailsWindow.xaml
+/// </summary>
+public partial class UserDetailsWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for UserDetailsWindow.xaml
-    /// </summary>
-    public partial class UserDetailsWindow : Window
+    private MainWindow mainWindow;
+    private UserManager userManager;
+    public UserDetailsWindow(TravelsWindow travelsWindow, UserManager userManager)
     {
-        public UserDetailsWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+        this.mainWindow = mainWindow;
+        this.userManager = userManager;
     }
 }

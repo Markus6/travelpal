@@ -9,12 +9,21 @@ namespace TravelPal.Managers;
 
 public class UserManager
 {
-    public List<IUser> Users { get; set; }
+    public List<IUser> Users { get; set; } = new List<IUser>();
     public IUser SignedInUser { get; set; }
 
     public bool AddUser(IUser userToAdd)
     {
-        return false;
+        if (validateUsername(userToAdd.Username))
+        {
+            Users.Add(userToAdd);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
     }
     public void RemoveUser(IUser userToRemove)
     {
@@ -26,10 +35,25 @@ public class UserManager
     }
     private bool validateUsername(string username)
     {
-        return false;
+        foreach (IUser user in Users)
+        {
+            if (username == user.Username)
+            {
+                return false;
+            }
+        }
+        return true;
     }
     public bool SignInUser(string username, string password)
     {
+        foreach (IUser user in Users)
+        {
+            if (user.Username==username&&user.Password==password)
+            {
+                SignedInUser = user;
+                return true;
+            }
+        }
         return false;
     }
 }
