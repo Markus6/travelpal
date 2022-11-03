@@ -16,7 +16,7 @@ public class Trip : Travel
         this.type = type;
     }
 
-    public string GetInfo()
+    override public string GetInfo()
     {
         return "";
     }

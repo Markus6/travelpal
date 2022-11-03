@@ -14,7 +14,7 @@ public class Vacation : Travel
     {
         this.AllInclusive = allInclusive;
     }
-    public string GetInfo()
+    override public string GetInfo()
     {
         return "";
     }
