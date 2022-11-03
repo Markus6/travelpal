@@ -62,6 +62,6 @@
             Grid.Column="1"
             Grid.Row="3"
             Content="Register"
-            Margin="10"/>
+            Margin="10" Click="btnRegister_Click"/>
     </Grid>
 </Window>
