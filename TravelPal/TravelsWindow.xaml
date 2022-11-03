@@ -12,6 +12,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -23,16 +24,18 @@
             x:Name="lblUser"
             Grid.Column="0"
             Grid.Row="0"
-            Grid.ColumnSpan="4"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="3"
             VerticalContentAlignment="Center"
             HorizontalAlignment="Center"
             FontSize="50"/>
         <ListView
             x:Name="lvTravels"
-            Grid.Column="1"
-            Grid.Row="1"
-            Grid.ColumnSpan="2"
-            Grid.RowSpan="2"/>
+            Grid.Column="2"
+            Grid.Row="0"
+            Grid.ColumnSpan="3"
+            Grid.RowSpan="3"
+            Margin="10"/>
         <Button
             x:Name="btnUser"
             Grid.Column="1"
@@ -40,8 +43,26 @@
             Content="User"
             Margin="10" Click="btnUser_Click"/>
         <Button
-            x:Name="btnAddTravel"
+            x:Name="btnSignOut"
+            Grid.Column="0"
+            Grid.Row="3"
+            Content="Sign out"
+            Margin="10" Click="btnSignOut_Click"/>
+        <Button
+            x:Name="btnRemove"
+            Grid.Column="3"
+            Grid.Row="3"
+            Content="Remove"
+            Margin="10" Click="btnRemove_Click"/>
+        <Button
+            x:Name="btnDetails"
             Grid.Column="2"
+            Grid.Row="3"
+            Content="Details"
+            Margin="10"/>
+        <Button
+            x:Name="btnAddTravel"
+            Grid.Column="5"
             Grid.Row="3"
             Content="Add travel"
             Margin="10" Click="btnAddTravel_Click"/>
