@@ -18,6 +18,6 @@ public class Trip : Travel
 
     override public string GetInfo()
     {
-        return "";
+        return $"{base.Destination}";
     }
 }

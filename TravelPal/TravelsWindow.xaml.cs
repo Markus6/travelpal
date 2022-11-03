@@ -40,7 +40,12 @@ public partial class TravelsWindow : Window
     private void btnAddTravel_Click(object sender, RoutedEventArgs e)
     {
         Hide();
-        AddTravelWindow addTravelWindow = new AddTravelWindow(this, UserManager);
+        AddTravelWindow addTravelWindow = new AddTravelWindow(this, userManager);
         addTravelWindow.Show();
+    }
+
+    public void addListViewItem(ListViewItem listViewItem)
+    {
+        lvTravels.Items.Add(listViewItem);
     }
 }

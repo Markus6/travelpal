@@ -9,13 +9,13 @@ namespace TravelPal.Managers;
 
 public class TravelManager
 {
-    public List<Travel> Travels { get; set; }
+    public List<Travel> Travels { get; set; } = new List<Travel>();
     public void AddTravel(Travel travelToAdd)
     {
-
+        Travels.Add(travelToAdd);
     }
     public void RemoveTravel(Travel travelToDelete)
     {
-
+        Travels.Remove(travelToDelete);
     }
 }

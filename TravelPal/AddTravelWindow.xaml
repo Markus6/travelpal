@@ -20,6 +20,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Label 
             Grid.Column="0"
@@ -27,8 +28,8 @@
             Grid.ColumnSpan="4"
             VerticalContentAlignment="Center"
             HorizontalAlignment="Center"
-            FontSize="50"
-            Content="TravelPal"/>
+            FontSize="40"
+            Content="Add travel"/>
         <Label
             Content="Destination"
             Grid.Row="1"
@@ -53,6 +54,12 @@
             Grid.Column="1"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"/>
+        <Label
+            x:Name="lblTripVacationType"
+            Grid.Row="5"
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
         <TextBox
             x:Name="txtDestination"
             Grid.Row="1"
@@ -71,15 +78,20 @@
             Grid.Row="3"
             Margin="10"/>
         <ComboBox
-            x:Name="cbTravel"
+            x:Name="cbTravelType"
             Grid.Column="2"
             Grid.Row="4"
+            Margin="10" SelectionChanged="cbTravelType_SelectionChanged"/>
+        <ComboBox
+            x:Name="cbTripVacationType"
+            Grid.Column="2"
+            Grid.Row="5"
             Margin="10"/>
         <Button
             x:Name="btnAdd"
             Grid.Column="2"
-            Grid.Row="5"
+            Grid.Row="6"
             Content="Add"
-            Margin="10"/>
+            Margin="10" Click="btnAdd_Click"/>
     </Grid>
 </Window>

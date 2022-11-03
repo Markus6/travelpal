@@ -28,6 +28,7 @@
             HorizontalAlignment="Center"
             FontSize="50"/>
         <ListView
+            x:Name="lvTravels"
             Grid.Column="1"
             Grid.Row="1"
             Grid.ColumnSpan="2"
