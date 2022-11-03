@@ -5,8 +5,81 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelPal"
         mc:Ignorable="d"
-        Title="AddTravelWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="AddTravelWindow" Height="450" Width="800" FontFamily="Arial" FontSize="20">
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label 
+            Grid.Column="0"
+            Grid.Row="0"
+            Grid.ColumnSpan="4"
+            VerticalContentAlignment="Center"
+            HorizontalAlignment="Center"
+            FontSize="50"
+            Content="TravelPal"/>
+        <Label
+            Content="Destination"
+            Grid.Row="1"
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"/>
+        <Label
+            Content="Number of Travellers"
+            Grid.Row="2"
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+        <Label
+            Content="Country"
+            Grid.Row="3"
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+        <Label
+            Content="Travel Type"
+            Grid.Row="4"
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+        <TextBox
+            x:Name="txtDestination"
+            Grid.Row="1"
+            Grid.Column="2"
+            Margin="10"
+            Height="50"/>
+        <TextBox
+            x:Name="txtTravellers"
+            Grid.Row="2"
+            Grid.Column="2"
+            Margin="10"
+            Height="50"/>
+        <ComboBox
+            x:Name="cbCountry"
+            Grid.Column="2"
+            Grid.Row="3"
+            Margin="10"/>
+        <ComboBox
+            x:Name="cbTravel"
+            Grid.Column="2"
+            Grid.Row="4"
+            Margin="10"/>
+        <Button
+            x:Name="btnAdd"
+            Grid.Column="2"
+            Grid.Row="5"
+            Content="Add"
+            Margin="10"/>
     </Grid>
 </Window>

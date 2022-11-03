@@ -40,6 +40,12 @@
             Grid.Column="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"/>
+        <Label
+            Content="Country"
+            Grid.Row="3"
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"/>
         <TextBox
             x:Name="txtUsername"
             Grid.Row="1"
