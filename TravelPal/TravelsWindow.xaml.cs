@@ -30,14 +30,35 @@ public partial class TravelsWindow : Window
         lblUser.Content = userManager.SignedInUser.Username;
         this.mainWindow = mainWindow;
         this.userManager = userManager;
-        travelManager = ((User)userManager.SignedInUser).TravelManager;
 
-        foreach (Travel travel in travelManager.Travels)
+        if (userManager.SignedInUser.GetType() == typeof(Admin))
         {
-            ListViewItem item = new ListViewItem();
-            item.Tag = travel;
-            item.Content = travel.GetInfo();
-            lvTravels.Items.Add(item);
+            btnAddTravel.IsEnabled = false;
+            foreach (IUser user in userManager.Users)
+            {
+                if (user.GetType() != typeof(Admin))
+                {
+                    foreach (Travel travel in ((User)user).TravelManager.Travels)
+                    {
+                        ListViewItem item = new ListViewItem();
+                        item.Content = $"{user.Username} - {travel.GetInfo()}";
+                        item.Tag = new TravelUserInfo(travel, user);
+                        lvTravels.Items.Add(item);
+                    }
+                }
+            }
+        }
+        else
+        {
+            travelManager = ((User)userManager.SignedInUser).TravelManager;
+            foreach (Travel travel in travelManager.Travels)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Tag = travel;
+                item.Content = travel.GetInfo();
+                lvTravels.Items.Add(item);
+            }
+            btnAddTravel.IsEnabled = true;
         }
     }
 
@@ -70,10 +91,22 @@ public partial class TravelsWindow : Window
     {
         if (lvTravels.SelectedItem != null)
         {
-            Travel travelToRemove = travelManager.Travels[lvTravels.SelectedIndex];
-            travelManager.RemoveTravel(travelToRemove);
-            ListViewItem selectedItem = lvTravels.SelectedItem as ListViewItem;
-            lvTravels.Items.Remove(selectedItem);
+            if (userManager.SignedInUser.GetType() == typeof(Admin))
+            {
+                ListViewItem selectedItem = lvTravels.SelectedItem as ListViewItem;
+                TravelUserInfo travelUserInfo = selectedItem.Tag as TravelUserInfo;
+                travelManager = ((User)travelUserInfo.User).TravelManager;
+                Travel travelToRemove = travelUserInfo.Travel;
+                travelManager.RemoveTravel(travelToRemove);
+                lvTravels.Items.Remove(selectedItem);
+            }
+            else
+            {
+                ListViewItem selectedItem = lvTravels.SelectedItem as ListViewItem;
+                Travel travelToRemove = selectedItem.Tag as Travel;
+                travelManager.RemoveTravel(travelToRemove);
+                lvTravels.Items.Remove(selectedItem);
+            }
         }
         else
         {
@@ -83,9 +116,40 @@ public partial class TravelsWindow : Window
 
     private void btnDetails_Click(object sender, RoutedEventArgs e)
     {
-        Hide();
-        Travel travel = travelManager.Travels[lvTravels.SelectedIndex];
-        TravelDetailsWindow travelDetailsWindow = new TravelDetailsWindow(travel);
-        travelDetailsWindow.Show();
+        if (lvTravels.SelectedItem != null)
+        {
+            Hide();
+            if (userManager.SignedInUser.GetType() == typeof(Admin))
+            {
+                ListViewItem selectedItem = lvTravels.SelectedItem as ListViewItem;
+
+                TravelUserInfo travelUserInfo = selectedItem.Tag as TravelUserInfo;
+                TravelDetailsWindow travelDetailsWindow = new TravelDetailsWindow(this, travelUserInfo.Travel);
+                travelDetailsWindow.Show();
+            }
+            else
+            {
+                ListViewItem selectedItem = lvTravels.SelectedItem as ListViewItem;
+
+                Travel travel = selectedItem.Tag as Travel;
+                TravelDetailsWindow travelDetailsWindow = new TravelDetailsWindow(this, travel);
+                travelDetailsWindow.Show();
+            }
+        }
+        else
+        {
+            MessageBox.Show("You have to select a travel to show first!");
+        }
     }
+}
+
+public class TravelUserInfo
+{
+    public TravelUserInfo(Travel travel, IUser user)
+    {
+        this.Travel = travel;
+        this.User = user;
+    }
+    public IUser User { get; set; }
+    public Travel Travel { get; set; }
 }

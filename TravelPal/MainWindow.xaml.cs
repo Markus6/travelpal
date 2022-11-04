@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TravelPal.Managers;
+using TravelPal.Model;
 
 namespace TravelPal;
 
@@ -25,6 +26,13 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        Admin admin = new Admin()
+        {
+            Username = "Admin",
+            Password = "admin",
+            Location = Enums.Countries.Sweden
+        };
+        userManager.AddUser(admin);
     }
 
     private void btnRegister_Click(object sender, RoutedEventArgs e)

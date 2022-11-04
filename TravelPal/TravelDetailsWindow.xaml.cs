@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TravelPal.Model;
 
 namespace TravelPal;
 
@@ -19,8 +20,47 @@ namespace TravelPal;
 /// </summary>
 public partial class TravelDetailsWindow : Window
 {
-    public TravelDetailsWindow()
+    private TravelsWindow travelsWindow;
+    public TravelDetailsWindow(TravelsWindow travelsWindow, Travel travel)
     {
         InitializeComponent();
+        this.travelsWindow = travelsWindow;
+        if (travel.GetType() == typeof(Trip))
+        {
+            ListViewItem Item1 = new ListViewItem();
+            Item1.Content = $"Trip type: {((Trip)travel).type}";
+            lvTravel.Items.Add(Item1);
+            ListViewItem Item2 = new ListViewItem();
+            Item2.Content = $"Number of travellers: {travel.Travellers}";
+            lvTravel.Items.Add(Item2);
+            ListViewItem Item3 = new ListViewItem();
+            Item3.Content = $"Country: {travel.Country}";
+            lvTravel.Items.Add(Item3);
+            ListViewItem Item4 = new ListViewItem();
+            Item4.Content = $"Destination: {travel.Destination}";
+            lvTravel.Items.Add(Item4);
+        }
+        else
+        {
+            ListViewItem Item1 = new ListViewItem();
+            Item1.Content = $"All inclusive: {((Vacation)travel).AllInclusive}";
+            lvTravel.Items.Add(Item1);
+            ListViewItem Item2 = new ListViewItem();
+            Item2.Content = $"Number of travellers: {travel.Travellers}";
+            lvTravel.Items.Add(Item2);
+            ListViewItem Item3 = new ListViewItem();
+            Item3.Content = $"Country: {travel.Country}";
+            lvTravel.Items.Add(Item3);
+            ListViewItem Item4 = new ListViewItem();
+            Item4.Content = $"Destination: {travel.Destination}";
+            lvTravel.Items.Add(Item4);
+        }
+
+    }
+
+    private void btnBack_Click(object sender, RoutedEventArgs e)
+    {
+        travelsWindow.Show();
+        Close();
     }
 }
