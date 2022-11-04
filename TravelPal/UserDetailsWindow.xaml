@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelPal"
         mc:Ignorable="d"
-        Title="UserDetailsWindow" Height="450" Width="800" FontFamily="Arial" FontSize="20" Background="MediumSlateBlue">
+        Title="UserDetailsWindow" Height="450" Width="800" WindowStyle="None" FontFamily="Arial" FontSize="20" Background="MediumSlateBlue">
     <Grid Margin="20" Background="MintCream">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
