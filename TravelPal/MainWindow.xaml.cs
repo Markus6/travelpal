@@ -66,4 +66,10 @@ public partial class MainWindow : Window
             MessageBox.Show("Wrong username or password!");
         }
     }
+    protected override void OnClosed(EventArgs e)
+    {
+        base.OnClosed(e);
+
+        Application.Current.Shutdown();
+    }
 }
