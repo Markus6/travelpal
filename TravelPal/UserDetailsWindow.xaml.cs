@@ -11,7 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TravelPal.Enums;
 using TravelPal.Managers;
+using TravelPal.Model;
 
 namespace TravelPal;
 
@@ -20,12 +22,62 @@ namespace TravelPal;
 /// </summary>
 public partial class UserDetailsWindow : Window
 {
-    private MainWindow mainWindow;
+    private TravelsWindow travelsWindow;
     private UserManager userManager;
     public UserDetailsWindow(TravelsWindow travelsWindow, UserManager userManager)
     {
         InitializeComponent();
-        this.mainWindow = mainWindow;
+        this.travelsWindow = travelsWindow;
         this.userManager = userManager;
+
+        string[] countries = Enum.GetNames(typeof(Countries));
+        cbCountry.ItemsSource = countries;
+    }
+
+    private void btnSave_Click(object sender, RoutedEventArgs e)
+    {
+        bool success = true;
+        User currentUser = (User)userManager.SignedInUser;
+        Countries country;
+        try
+        {
+            country = (Countries)Enum.Parse(typeof(Countries), (string)cbCountry.SelectedItem);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("You need to select a country!");
+            success = false;
+        }
+        if (success && txtUsername.Text != "" && pwdPassword.Password != "" && pwdConfirmPassword.Password != "")
+        {
+            if (pwdPassword.Password == pwdConfirmPassword.Password)
+            {
+                if (userManager.UpdateUsername(currentUser, txtUsername.Text))
+                {
+                    currentUser.Password = pwdPassword.Password;
+                }
+                else
+                {
+                    MessageBox.Show("Username already exists!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Password and confirm password are not matching!");
+            }
+        }
+        else
+        {
+            MessageBox.Show("Invalid input!");
+        }
+        Close();
+        travelsWindow.UpdateUsernameLabel(userManager.SignedInUser.Username);
+        travelsWindow.Show();
+    }
+
+    private void btnCancel_Click(object sender, RoutedEventArgs e)
+    {
+        Close();
+        travelsWindow.Show();
     }
 }

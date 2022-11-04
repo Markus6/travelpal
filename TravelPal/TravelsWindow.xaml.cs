@@ -34,6 +34,7 @@ public partial class TravelsWindow : Window
         if (userManager.SignedInUser.GetType() == typeof(Admin))
         {
             btnAddTravel.IsEnabled = false;
+            btnUser.IsEnabled = false;
             foreach (IUser user in userManager.Users)
             {
                 if (user.GetType() != typeof(Admin))
@@ -59,6 +60,7 @@ public partial class TravelsWindow : Window
                 lvTravels.Items.Add(item);
             }
             btnAddTravel.IsEnabled = true;
+            btnUser.IsEnabled = true;
         }
     }
 
@@ -79,6 +81,10 @@ public partial class TravelsWindow : Window
     public void addListViewItem(ListViewItem listViewItem)
     {
         lvTravels.Items.Add(listViewItem);
+    }
+    public void UpdateUsernameLabel(string newUsername)
+    {
+        lblUser.Content = newUsername;
     }
 
     private void btnSignOut_Click(object sender, RoutedEventArgs e)

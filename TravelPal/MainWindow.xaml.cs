@@ -28,11 +28,22 @@ public partial class MainWindow : Window
         InitializeComponent();
         Admin admin = new Admin()
         {
-            Username = "Admin",
-            Password = "admin",
+            Username = "admin",
+            Password = "password",
             Location = Enums.Countries.Sweden
         };
         userManager.AddUser(admin);
+        User user = new User()
+        {
+            Username = "Gandalf",
+            Password = "password",
+            Location = Enums.Countries.United_Kingdom
+        };
+        Trip travel1 = new Trip(Enums.TripTypes.Work,"New York", Enums.Countries.United_States, 1);
+        user.TravelManager.AddTravel(travel1);
+        Vacation travel2 = new Vacation(true, "Copenhagen", Enums.Countries.Denmark, 3);
+        user.TravelManager.AddTravel(travel2);
+        userManager.AddUser(user);
     }
 
     private void btnRegister_Click(object sender, RoutedEventArgs e)

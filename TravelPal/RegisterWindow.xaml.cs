@@ -50,12 +50,23 @@ public partial class RegisterWindow : Window
         }
         user.Username = txtUsername.Text;
         user.Password = pwdPassword.Password;
-        if (success)
+        if (success && txtUsername.Text != "" && pwdPassword.Password != "" && pwdConfirmPassword.Password != "")
         {
-            if (!userManager.AddUser(user))
+            if (pwdPassword.Password == pwdConfirmPassword.Password)
             {
-                MessageBox.Show("Username already exists!");
+                if (!userManager.AddUser(user))
+                {
+                    MessageBox.Show("Username already exists!");
+                }
             }
+            else
+            {
+                MessageBox.Show("Password and confirm password are not matching!");
+            }
+        }
+        else
+        {
+            MessageBox.Show("Invalid input!");
         }
         Close();
         mainWindow.Show();

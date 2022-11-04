@@ -29,9 +29,17 @@ public class UserManager
     {
 
     }
-    public bool UpdateUsername(IUser userToUpdate, string username)
+    public bool UpdateUsername(IUser userToUpdate, string newUsername)
     {
-        return false;
+        if (validateUsername(newUsername))
+        {
+            userToUpdate.Username = newUsername;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     private bool validateUsername(string username)
     {

@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelPal"
         mc:Ignorable="d"
-        Title="TravelsWindow" Height="450" Width="800" FontFamily="Arial" FontSize="20">
-    <Grid Margin="20">
+        Title="TravelsWindow" Height="450" Width="800" FontFamily="Arial" FontSize="20" Background="MediumSlateBlue">
+    <Grid Margin="20" Background="MintCream">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
