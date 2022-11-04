@@ -16,6 +16,7 @@ public class Trip : Travel
         this.type = type;
     }
 
+    //Returns destination of the Travel
     override public string GetInfo()
     {
         return $"{base.Destination}";

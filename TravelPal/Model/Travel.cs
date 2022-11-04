@@ -18,8 +18,10 @@ public class Travel
         this.Country = country;
         this.Travellers = travellers;
     }
+
+    //Returns destination of the Travel
     virtual public string GetInfo()
     {
-        return "";
+        return $"{Destination}";
     }
 }

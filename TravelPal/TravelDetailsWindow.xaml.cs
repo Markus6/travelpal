@@ -58,6 +58,7 @@ public partial class TravelDetailsWindow : Window
 
     }
 
+    //Closes the travel details window and opens the travels window
     private void btnBack_Click(object sender, RoutedEventArgs e)
     {
         travelsWindow.Show();

@@ -35,6 +35,7 @@ public partial class RegisterWindow : Window
         cbCountry.ItemsSource = countries;
     }
 
+    //Checks if the user entered correct inputs and a new user will be created and the main window opens again
     private void btnRegister_Click(object sender, RoutedEventArgs e)
     {
         bool success = true;

@@ -64,6 +64,7 @@ public partial class TravelsWindow : Window
         }
     }
 
+    //Shows the user details window and hides the travels window
     private void btnUser_Click(object sender, RoutedEventArgs e)
     {
         Hide();
@@ -71,6 +72,7 @@ public partial class TravelsWindow : Window
         userDetailsWindow.Show();
     }
 
+    //Shows the add travel window and hides the travels window
     private void btnAddTravel_Click(object sender, RoutedEventArgs e)
     {
         Hide();
@@ -78,21 +80,26 @@ public partial class TravelsWindow : Window
         addTravelWindow.Show();
     }
 
+    //Adds an item to the list view
     public void addListViewItem(ListViewItem listViewItem)
     {
         lvTravels.Items.Add(listViewItem);
     }
+
+    //updates the username label with a new username
     public void UpdateUsernameLabel(string newUsername)
     {
         lblUser.Content = newUsername;
     }
 
+    //Closes the travels window and opens the main window
     private void btnSignOut_Click(object sender, RoutedEventArgs e)
     {
         mainWindow.Show();
         Close();
     }
 
+    //Removes the selected travel from the travels list
     private void btnRemove_Click(object sender, RoutedEventArgs e)
     {
         if (lvTravels.SelectedItem != null)
@@ -120,6 +127,7 @@ public partial class TravelsWindow : Window
         }
     }
 
+    //Shows details of the selected travel
     private void btnDetails_Click(object sender, RoutedEventArgs e)
     {
         if (lvTravels.SelectedItem != null)

@@ -14,6 +14,8 @@ public class Vacation : Travel
     {
         this.AllInclusive = allInclusive;
     }
+
+    //Returns destination of the Travel
     override public string GetInfo()
     {
         return $"{base.Destination}";

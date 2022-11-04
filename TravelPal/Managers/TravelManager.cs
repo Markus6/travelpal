@@ -10,10 +10,14 @@ namespace TravelPal.Managers;
 public class TravelManager
 {
     public List<Travel> Travels { get; set; } = new List<Travel>();
+
+    //Adds a travel to the Travels list
     public void AddTravel(Travel travelToAdd)
     {
         Travels.Add(travelToAdd);
     }
+
+    //Removes a travel from the Travels list
     public void RemoveTravel(Travel travelToDelete)
     {
         Travels.Remove(travelToDelete);

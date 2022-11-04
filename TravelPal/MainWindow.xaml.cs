@@ -46,6 +46,7 @@ public partial class MainWindow : Window
         userManager.AddUser(user);
     }
 
+    //Hides the main window and shows the register window
     private void btnRegister_Click(object sender, RoutedEventArgs e)
     {
         Hide();
@@ -53,6 +54,7 @@ public partial class MainWindow : Window
         registerWindow.Show();
     }
 
+    //If the user entered correct username and password the user will be signed in and the travel window opens
     private void btnSignIn_Click(object sender, RoutedEventArgs e)
     {
         if (userManager.SignInUser(txtUsername.Text, pwdPassword.Password))

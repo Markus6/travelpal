@@ -34,6 +34,7 @@ public partial class UserDetailsWindow : Window
         cbCountry.ItemsSource = countries;
     }
 
+    //If the user enters correct inputs the signed in user will update with the new inputs
     private void btnSave_Click(object sender, RoutedEventArgs e)
     {
         bool success = true;
@@ -75,6 +76,7 @@ public partial class UserDetailsWindow : Window
         travelsWindow.Show();
     }
 
+    //Closes the user details window and opens the travels window
     private void btnCancel_Click(object sender, RoutedEventArgs e)
     {
         Close();

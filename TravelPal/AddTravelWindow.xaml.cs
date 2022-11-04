@@ -40,6 +40,7 @@ public partial class AddTravelWindow : Window
         cbTravelType.ItemsSource = travelTypes;
     }
 
+    //Checks all inputs from the user and then creates a Travel
     private void btnAdd_Click(object sender, RoutedEventArgs e)
     {
         string type;
@@ -91,6 +92,7 @@ public partial class AddTravelWindow : Window
         Hide();
     }
 
+    //Changes the contents of cbTripVacationType depending on if the user selected Trip or Vacation
     private void cbTravelType_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (cbTravelType.SelectedItem == "Trip")

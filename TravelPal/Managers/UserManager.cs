@@ -12,6 +12,7 @@ public class UserManager
     public List<IUser> Users { get; set; } = new List<IUser>();
     public IUser SignedInUser { get; set; }
 
+    //Adds a user to the Users list
     public bool AddUser(IUser userToAdd)
     {
         if (validateUsername(userToAdd.Username))
@@ -25,10 +26,8 @@ public class UserManager
         }
         
     }
-    public void RemoveUser(IUser userToRemove)
-    {
 
-    }
+    //Updates the username of a specified user
     public bool UpdateUsername(IUser userToUpdate, string newUsername)
     {
         if (validateUsername(newUsername))
@@ -41,6 +40,8 @@ public class UserManager
             return false;
         }
     }
+
+    //Checks if a username already exists in Users list
     private bool validateUsername(string username)
     {
         foreach (IUser user in Users)
@@ -52,6 +53,8 @@ public class UserManager
         }
         return true;
     }
+
+    //Checks if username and password matches a user in the User list. If it finds a user it makes the found user the signed in user
     public bool SignInUser(string username, string password)
     {
         foreach (IUser user in Users)
